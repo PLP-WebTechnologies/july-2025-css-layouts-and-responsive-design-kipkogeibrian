@@ -1,0 +1,360 @@
+
+                                index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layouts with Flexbox & Grid</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Layout Master</div>
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-btn">☰</button>
+    </header>
+
+    <main class="grid-container">
+        <section class="hero">
+            <h1>Responsive Web Design</h1>
+            <p>Mastering Flexbox, Grid, and Media Queries</p>
+            <button class="cta-btn">Learn More</button>
+        </section>
+
+        <section class="features">
+            <h2>Core Features</h2>
+            <div class="feature-cards">
+                <div class="card">
+                    <h3>Flexbox Layout</h3>
+                    <p>One-dimensional layout system for aligning items in rows or columns.</p>
+                </div>
+                <div class="card">
+                    <h3>CSS Grid</h3>
+                    <p>Two-dimensional grid-based layout system for complex designs.</p>
+                </div>
+                <div class="card">
+                    <h3>Media Queries</h3>
+                    <p>Adapt your layout to different screen sizes and devices.</p>
+                </div>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <h3>Quick Links</h3>
+            <ul class="sidebar-links">
+                <li><a href="#">Flexbox Guide</a></li>
+                <li><a href="#">Grid Tutorial</a></li>
+                <li><a href="#">Responsive Patterns</a></li>
+                <li><a href="#">Viewport Units</a></li>
+            </ul>
+        </aside>
+
+        <section class="testimonials">
+            <h2>What Our Students Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p>"This course transformed how I approach layouts!"</p>
+                    <cite>- Sarah K.</cite>
+                </div>
+                <div class="testimonial">
+                    <p>"Finally understand responsive design principles."</p>
+                    <cite>- Mark T.</cite>
+                </div>
+                <div class="testimonial">
+                    <p>"The Flexbox vs Grid explanations were perfect."</p>
+                    <cite>- Priya M.</cite>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2023 Responsive Design Mastery</p>
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+                        styles.css
+/* Base Styles & Variables */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #333;
+    --spacing-unit: 1rem;
+    --border-radius: 4px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: #f9f9f9;
+}
+
+/* Header - Flexbox Example */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-unit) 5%;
+    background-color: var(--secondary-color);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--light-color);
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: var(--primary-color);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Main Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    grid-template-areas:
+        "hero hero"
+        "features sidebar"
+        "testimonials testimonials";
+    gap: 2rem;
+    padding: 2rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.hero {
+    grid-area: hero;
+    min-height: 60vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('https://via.placeholder.com/1200x400') center/cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 4rem;
+    border-radius: var(--border-radius);
+}
+
+.features {
+    grid-area: features;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: var(--light-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    align-self: start;
+    position: sticky;
+    top: 80px;
+}
+
+.testimonials {
+    grid-area: testimonials;
+}
+
+/* Flexbox Components */
+.feature-cards {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card {
+    flex: 1;
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.testimonial {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer - Flexbox Example */
+.footer {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 2rem 5%;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Buttons & Interactive Elements */
+.cta-btn {
+    padding: 0.8rem 1.5rem;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.cta-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Responsive Design - Media Queries */
+@media (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "hero"
+            "features"
+            "sidebar"
+            "testimonials";
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .feature-cards {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-nav {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .hero {
+        padding: 2rem;
+        min-height: 50vh;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-container {
+        padding: 1rem;
+    }
+
+    .hero {
+        min-height: 40vh;
+    }
+
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Utility Classes */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
